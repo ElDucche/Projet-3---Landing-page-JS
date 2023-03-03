@@ -30,6 +30,9 @@
     </div>
   </div>
     <main>
+      <div class="success">
+        <p>Nous avons bien reçu votre formulaire !</p>
+      </div>
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -54,13 +57,16 @@
 
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class="close" onclick="closeModal()"></span>
           <div class="modal-body">
+            <div class="error">
+              <p>Les données renseignées sont incorrectes !</p>
+            </div>
             <form
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event)"
             >
               <div
                 class="formData">
@@ -71,6 +77,9 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
+                  data-error="Veuillez saisir un prénom valide (2 caractères minimum)"
+                  oninvalid="event.preventDefault();"
                 /><br>
               </div>
               <div
@@ -81,6 +90,10 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  required
+                  data-error="Veuillez saisir un nom valide (2 caractères minimum)"
+                  oninvalid="event.preventDefault();"
                 /><br>
               </div>
               <div
@@ -91,6 +104,9 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
+                  data-error="Veuillez saisir une adresse e-mail valide"
+                  oninvalid="event.preventDefault();"
                 /><br>
               </div>
               <div
@@ -101,12 +117,17 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
+                  oninvalid="event.preventDefault();"
                 /><br>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required
+                data-error="Veuillez saisir un nombre entre 0 et 99"
+                oninvalid="event.preventDefault();"
+                >
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -184,6 +205,7 @@
                 <input
                   class="checkbox-input"
                   type="checkbox"
+                  name="condition"
                   id="checkbox1"
                   checked
                 />
@@ -195,7 +217,7 @@
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
