@@ -226,7 +226,7 @@ input {
   border: 2px solid #e54858;
 }
 
-input[data-error]::after {
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
@@ -236,7 +236,7 @@ input:invalid::after{
   content: "erreur";
   color:red;
   font-size:1rem;
-}
+} */
 
 .checkbox-label,
 .checkbox2-label {
@@ -495,13 +495,16 @@ input:invalid::after{
 }
 
 .error {
-  display: none;
+  display: block;
   width: 100%;
   border:1px solid red;
   background-color: rgba(255,0,0,0.1);
-  border-radius: 25px;
-  padding: 15px;
-  margin-bottom: 10px;
+  border-radius: 15px;
+  font-size: .75rem;
+  color:red;
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .error > p {
   text-align: center;

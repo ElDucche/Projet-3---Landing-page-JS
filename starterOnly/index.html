@@ -31,7 +31,7 @@
   </div>
     <main>
       <div class="success">
-        <p>Nous avons bien reçu votre formulaire !</p>
+        <p>Votre réservation a bien été enregistrée</p>
       </div>
       <div class="hero-section">
         <div class="hero-content">
@@ -59,9 +59,6 @@
         <div class="content">
           <span class="close" onclick="closeModal()"></span>
           <div class="modal-body">
-            <div class="error">
-              <p>Les données renseignées sont incorrectes !</p>
-            </div>
             <form
               name="reserve"
               action="index.html"
@@ -78,9 +75,11 @@
                   name="first"
                   minlength="2"
                   required
-                  data-error="Veuillez saisir un prénom valide (2 caractères minimum)"
-                  oninvalid="event.preventDefault();"
-                /><br>
+                  onchange="resetMessage('prenom')"
+                  oninvalid="event.preventDefault(); errorMessage('prenom')"                  
+                />
+                <br>
+                <span id="prenom" style="display: none;">Il faut au moins 2 caractères.</span>
               </div>
               <div
                 class="formData">
@@ -92,9 +91,10 @@
                   name="last"
                   minlength="2"
                   required
-                  data-error="Veuillez saisir un nom valide (2 caractères minimum)"
-                  oninvalid="event.preventDefault();"
+                  onchange="resetMessage('nom')"
+                  oninvalid="event.preventDefault();errorMessage('nom')"
                 /><br>
+                <span id="nom" style="display: none;">Il faut au moins 2 caractères.</span>
               </div>
               <div
                 class="formData">
@@ -105,9 +105,10 @@
                   id="email"
                   name="email"
                   required
-                  data-error="Veuillez saisir une adresse e-mail valide"
-                  oninvalid="event.preventDefault();"
+                  onchange="resetMessage('mail')"
+                  oninvalid="event.preventDefault(); errorMessage('mail')"
                 /><br>
+                <span id="mail" style="display: none;">Veuillez entrer un e-mail valide.</span>
               </div>
               <div
                 class="formData">
@@ -118,16 +119,19 @@
                   id="birthdate"
                   name="birthdate"
                   required
-                  oninvalid="event.preventDefault();"
+                  onchange="resetMessage('date')"
+                  oninvalid="event.preventDefault(); errorMessage('date');"
                 /><br>
+                <span id="date" style="display: none;">Veuillez entrer une date valide.</span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required
-                data-error="Veuillez saisir un nombre entre 0 et 99"
-                oninvalid="event.preventDefault();"
+                onchange="resetMessage('tournois')"
+                oninvalid="event.preventDefault(); errorMessage('tournois');"
                 >
+                <span id="tournois" style="display: none;">Veuillez entrer un nombre entre 0 et 99</span>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -198,6 +202,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span id="radio" style="display: none;">Vous devez cocher une case</span>
               </div>
 
               <div
@@ -208,11 +213,15 @@
                   name="condition"
                   id="checkbox1"
                   checked
+                  required
+                  onchange="resetMessage('requis')"
+                  oninvalid="event.preventDefault(); errorMessage('requis')"
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <span id="requis" style="display: none;">Vous devez cocher cette case.</span>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">

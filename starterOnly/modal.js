@@ -27,77 +27,28 @@ function closeModal() {
 
 //get form data
 function validate(event) {
-  // suppr la ligne à la fin
+  console.log('je suis appelé')
   event.preventDefault();
-  //
-  var form = document.forms.reserve;
-  // const formData = new FormData(event.currentTarget);
-  // const entries = Object.fromEntries(formData.entries());
-  // console.log(entries);
+  const formData = new FormData(event.currentTarget);
+  const entries = Object.fromEntries(formData.entries());
+  console.log(entries);
+  if (!entries.location) {
+    errorMessage('radio');
+    return
+  }
   const success = document.querySelector('.success');
-  // Ajouter condition d'error
-  var first = form.first;
-  var last = form.last;
-  var email = form.email;
-  var birthdate = form.birthdate;
-  var quantity = form.quantity;
-  var location = form.location;
+  success.style.display = 'block';
 
-  var errorMessages = {
-    first: "Veuillez saisir votre prénom",
-    last: "Veuillez saisir votre nom",
-    email: "Veuillez saisir une adresse email valide",
-    birthdate: "Veuillez saisir votre date de naissance",
-    quantity: "Veuillez saisir le nombre de tournois",
-    location: "Veuillez sélectionner une ville",
-  };
+  closeModal();
 
-  var isValid = true;
-
-  if (first.value === "") {
-    isValid = false;
-    first.setAttribute("data-error", errorMessages.first);
-  } else {
-    first.removeAttribute("data-error");
-  }
-
-  if (last.value === "") {
-    isValid = false;
-    last.setAttribute("data-error", errorMessages.last);
-  } else {
-    last.removeAttribute("data-error");
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-    isValid = false;
-    email.setAttribute("data-error", errorMessages.email);
-  } else {
-    email.removeAttribute("data-error");
-  }
-
-  if (birthdate.value === "") {
-    isValid = false;
-    birthdate.setAttribute("data-error", errorMessages.birthdate);
-  } else {
-    birthdate.removeAttribute("data-error");
-  }
-
-  if (quantity.value === "") {
-    isValid = false;
-    quantity.setAttribute("data-error", errorMessages.quantity);
-  } else {
-    quantity.removeAttribute("data-error");
-  }
-
-  if (!location.value) {
-    isValid = false;
-    location.setAttribute("data-error", errorMessages.location);
-  } else {
-    location.removeAttribute("data-error");
-  }
-
-  if (isValid) {
-    form.submit();
-  }
 }
 
+function errorMessage(id) {
+  let element = document.getElementById(id);
+  element.classList.add('error');
+  element.style.display = 'block';
+}
+
+function resetMessage(id) {
+  document.getElementById(id).style.display='none'
+}
