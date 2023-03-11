@@ -27,7 +27,6 @@ function closeModal() {
 
 //get form data
 function validate(event) {
-  console.log('je suis appelé')
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
   const entries = Object.fromEntries(formData.entries());
@@ -36,19 +35,30 @@ function validate(event) {
     errorMessage('radio');
     return
   }
-  const success = document.querySelector('.success');
-  success.style.display = 'block';
-
-  closeModal();
+  event.currentTarget.classList.add('hidden');
+  document.getElementById('success').classList.remove('hidden');
+  document.getElementById('success').classList.add('block');
 
 }
 
 function errorMessage(id) {
   let element = document.getElementById(id);
-  element.classList.add('error');
-  element.style.display = 'block';
+  if (element) {
+    element.classList.add('border-error');
+  }
+  let span = document.getElementById(id+"-span")
+  span.classList.add('error');
+  // remove class hidden
+  span.classList.remove('hidden')
+  //add class block
+  span.classList.add('block')
 }
 
 function resetMessage(id) {
-  document.getElementById(id).style.display='none'
+  //remove border style
+  document.getElementById(id).classList.remove('border-error')
+  //remove class block
+  document.getElementById(id+"-span").classList.remove('block');
+  //add class hidden
+  document.getElementById(id+"-span").classList.add('hidden');
 }

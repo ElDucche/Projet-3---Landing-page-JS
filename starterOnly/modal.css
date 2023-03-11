@@ -339,6 +339,18 @@ input:invalid::after{
   cursor: pointer;
   border: 0;
 }
+.btn-close {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  text-align:center;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 0px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -479,37 +491,49 @@ input:invalid::after{
 .hero-section > .btn-signup {
   display: none;
 }
-.success {
-  display: none;
-  width: 100%;
-  border:1px solid green;
-  background-color: rgba(0,255,0,0.1);
-  border-radius: 25px;
-  padding: 15px;
-  margin-bottom: 10px;
+#success > div {
+  height: 75vh;
+  display:grid;
+  place-content: center;
+  place-items: center;
 }
-.success > p {
+#success > div > h2 {
   text-align: center;
-  opacity: 1;
-  color: green;
+  width: 60%;
+  font-size: 2rem;
+}
+#success > button {
+  padding: 12px 0 ;
+  text-align: center;
 }
 
 .error {
   display: block;
   width: 100%;
-  border:1px solid red;
-  background-color: rgba(255,0,0,0.1);
+  // border:1px solid red;
+  // background-color: rgba(255,0,0,0.1);
   border-radius: 15px;
-  font-size: .75rem;
-  color:red;
-  padding: 10px;
-  margin-bottom: 5px;
+  font-size: 10px;
+  color:#FF4E60;
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 .error > p {
   text-align: center;
   opacity: 1;
   color: red;
+}
+
+.hidden {
+  display:none;
+}
+
+.block {
+  display:block;
+}
+
+.border-error {
+  border: 2px solid #FF4E60;
 }
 
 footer {
