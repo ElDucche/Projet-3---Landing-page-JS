@@ -87,6 +87,9 @@ img {
     display: block;
     text-align: left;
   }
+  .icon i {
+    color:red;
+  }
 }
 
 
@@ -97,6 +100,9 @@ img {
     float: right;
     display: block;
     margin-top: -15px;
+  }
+  .icon i {
+    color:red;
   }
 } 
 
@@ -168,6 +174,8 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -185,6 +193,23 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .bground {
+    background-color: rgba(0,0,0,0);
+  }
+  .content {
+    margin: 0;
+    margin-top: 6rem;
+    max-width: 100%;
+    min-height : 90vh;
+  }
+
+  #formulaire {
+    max-width: 30rem;
+    margin: auto;
+  }
 }
 
 label {
@@ -503,15 +528,13 @@ input:invalid::after{
   font-size: 2rem;
 }
 #success > button {
-  padding: 12px 0 ;
+  padding: 12px 3rem ;
   text-align: center;
 }
 
 .error {
   display: block;
   width: 100%;
-  // border:1px solid red;
-  // background-color: rgba(255,0,0,0.1);
   border-radius: 15px;
   font-size: 10px;
   color:#FF4E60;

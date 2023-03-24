@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" >
     <title>Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="modal.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
-    />
+    >
   </head>
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png">
+      </div>
+      <div class="main-navbar">
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -45,7 +43,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./bg_img.jpg" alt="img">
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
@@ -60,6 +58,7 @@
               name="reserve"
               action="index.html"
               method="get"
+              id="formulaire"
               onsubmit="return validate(event)"
             >
               <div
@@ -74,7 +73,7 @@
                   required
                   onchange="resetMessage('first')"
                   oninvalid="event.preventDefault(); errorMessage('first')"                  
-                />
+                >
                 <br>
                 <span id="first-span" class="hidden">Il faut au moins 2 caractères.</span>
               </div>
@@ -90,7 +89,7 @@
                   required
                   onchange="resetMessage('last')"
                   oninvalid="event.preventDefault();errorMessage('last')"
-                /><br>
+                ><br>
                 <span id="last-span" class="hidden">Il faut au moins 2 caractères.</span>
               </div>
               <div
@@ -104,7 +103,7 @@
                   required
                   onchange="resetMessage('email')"
                   oninvalid="event.preventDefault(); errorMessage('email')"
-                /><br>
+                ><br>
                 <span id="email-span" class="hidden">Veuillez entrer un e-mail valide.</span>
               </div>
               <div
@@ -118,7 +117,7 @@
                   required
                   onchange="resetMessage('birthdate')"
                   oninvalid="event.preventDefault(); errorMessage('birthdate');"
-                /><br>
+                ><br>
                 <span id="birthdate-span" class="hidden">Veuillez entrer une date valide.</span>
               </div>
               <div
@@ -140,7 +139,7 @@
                   name="location"
                   value="New York"
                   onchange="resetMessage('radio')"
-                />
+                >
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
                   New York</label
@@ -152,7 +151,7 @@
                   name="location"
                   value="San Francisco"
                   onchange="resetMessage('radio')"
-                />
+                >
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
                   San Francisco</label
@@ -164,7 +163,7 @@
                   name="location"
                   value="Seattle"
                   onchange="resetMessage('radio')"
-                />
+                >
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
                   Seattle</label
@@ -176,7 +175,7 @@
                   name="location"
                   value="Chicago"
                   onchange="resetMessage('radio')"
-                />
+                >
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
                   Chicago</label
@@ -188,7 +187,7 @@
                   name="location"
                   value="Boston"
                   onchange="resetMessage('radio')"
-                />
+                >
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
                   Boston</label
@@ -200,7 +199,7 @@
                   name="location"
                   value="Portland"
                   onchange="resetMessage('radio')"
-                />
+                >
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
@@ -219,37 +218,38 @@
                   required
                   onchange="resetMessage('requis')"
                   oninvalid="event.preventDefault(); errorMessage('requis')"
-                />
+                >
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <span id="requis-span" class="hidden">Vous devez cocher cette case.</span>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input class="checkbox-input" type="checkbox" id="checkbox2" >
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
-              <input
-                class="btn-submit"
+              <button
+                class="btn-submit button"
                 type="submit"
-                class="button"
-                value="C'est parti"
-              />
+              >
+                C'est parti
+              </button>
             </form>
             <div class="hidden" id="success">
               <div>
                 <h2>Merci pour votre inscription</h2>
               </div>
-              <input
+              <button
                 class="btn-close"
-                value="Fermer"
                 onclick="closeModal()"
-              />
-            </div>
+              >
+                Fermer
+              </button>
+              </div>
           </div>
         </div>
       </div>
