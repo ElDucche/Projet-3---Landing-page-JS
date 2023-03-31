@@ -28,8 +28,14 @@ function launchModal() {
     if (inputs[i].type === "radio") {
       inputs[i].removeAttribute("checked")
     }
-
   }
+  // Reset error messages
+  const errorSpan = document.querySelectorAll(".formData > span");
+  errorSpan.forEach(span => span.classList.remove("error", "block"))
+  errorSpan.forEach(span => span.classList.add("hidden"));
+  // reset border-error
+  const bordered = document.querySelectorAll('.border-error');
+  bordered.forEach(input => input.classList.remove('border-error'));
   modalbg.style.display = "block";
   addForm();
   hideSuccess();
@@ -73,7 +79,7 @@ function errorMessage(id) {
 
 function resetMessage(id) {
   //remove border style
-  document.getElementById(id).classList.remove('border-error')
+  document.getElementById(id)?.classList.remove('border-error')
   //remove class block
   document.getElementById(id+"-span").classList.remove('block');
   //add class hidden
