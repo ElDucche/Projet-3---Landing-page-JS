@@ -58,6 +58,14 @@ function validate(event) {
     errorMessage('radio');
     return
   }
+  if (!validateEmail(entries.email)) {
+    errorMessage('email')
+    return
+  }
+  if (!validateBirthdate(entries.birthdate)) {
+    errorMessage('birthdate')
+    return
+  }
   hideForm();
   addSuccess();
 
@@ -75,6 +83,18 @@ function errorMessage(id) {
   span.classList.remove('hidden')
   //add class block
   span.classList.add('block')
+}
+
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+function validateBirthdate(date) {
+  const currentDate = new Date()
+  const selectedDate = new Date(date);
+  console.log(currentDate > selectedDate)
+  return currentDate > selectedDate;
 }
 
 function resetMessage(id) {
